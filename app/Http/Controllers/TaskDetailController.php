@@ -37,7 +37,6 @@ class TaskDetailController extends BaseAPIController
     public function index($taskId): \Illuminate\Http\JsonResponse
     {
         $taskDetails = TaskDetail::where('task_id', $taskId)
-            ->where("status", TaskDetailStatus::APPROVED)
             ->orderBy("last_status_updated_on", "DESC")
             ->get();
 
@@ -59,11 +58,6 @@ class TaskDetailController extends BaseAPIController
      *    @OA\Schema(type="string")
      *  ),
      *  @OA\Parameter(name="taskTypeId",
-     *    in="query",
-     *    required=true,
-     *    @OA\Schema(type="integer")
-     *  ),
-     *  @OA\Parameter(name="sequenceNumber",
      *    in="query",
      *    required=true,
      *    @OA\Schema(type="integer")
@@ -91,7 +85,6 @@ class TaskDetailController extends BaseAPIController
         $validator = Validator::make(Request::all(), [
             'title'          => 'required|string',
             'taskTypeId'     => 'required|int',
-            'sequenceNumber' => 'required|int',
             'prerequisites'  => 'array',
         ]);
 
@@ -124,7 +117,7 @@ class TaskDetailController extends BaseAPIController
         $taskDetail->task_id = Request::input('taskId');
         $taskDetail->task_type_id = Request::input('taskTypeId');
         $taskDetail->additional_fields = $additionalFieldsJson;
-        $taskDetail->prerequisites =  Request::input('prerequisites');
+        $taskDetail->prerequisites =  Request::input('prerequisites') ?: array();
 
         try {
             $prerequisiteArray = TaskDetailHelper::prerequisiteArrayBuild($taskId, $taskDetail->prerequisites);
@@ -204,7 +197,7 @@ class TaskDetailController extends BaseAPIController
 
         $taskDetail->title = Request::input('title');
         $taskDetail->task_type_id = Request::input('taskTypeId');
-        $taskDetail->prerequisites = Request::input('prerequisites');
+        $taskDetail->prerequisites = Request::input('prerequisites') ?: array();
 
         try {
             $prerequisiteArray = TaskDetailHelper::prerequisiteArrayBuild($taskDetail->task_id, $taskDetail->prerequisites);

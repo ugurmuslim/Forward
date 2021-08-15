@@ -130,14 +130,6 @@
                         }
                     },
                     {
-                        "name": "sequenceNumber",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
                         "name": "taskPrerequisiteSequenceId",
                         "in": "query",
                         "required": false,

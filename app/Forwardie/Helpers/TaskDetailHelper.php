@@ -94,7 +94,7 @@ class TaskDetailHelper
             throw new \Exception("There are unmatched Task Details");
         }
 
-        $prerequisiteArray = [];
+        $prerequisiteArray = $prerequisites;
         foreach ($taskDetails as $tasks) {
             $array = json_decode($tasks, true);
             if (count($array) > 0) {
