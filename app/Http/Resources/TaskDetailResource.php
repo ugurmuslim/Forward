@@ -26,7 +26,6 @@ class TaskDetailResource extends JsonResource
             'id'               => $this->id,
             'title'            => $this->title,
             'task'             => $this->task->title,
-            'sequenceNumber'   => $this->sequence_number,
             'prerequisites'    => $this->prerequisites,
             'additionalFields' => $this->additional_fields,
             'taskType'         => $this->taskType->title,

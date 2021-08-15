@@ -20,7 +20,6 @@ class CreateTaskDetailsTable extends Migration
             $table->string('title');
             $table->integer('task_type_id')->unsigned();
             $table->foreign('task_type_id')->references('id')->on('task_types');
-            $table->integer('sequence_number')->unsigned();
             $table->json('additional_fields')->nullable();
             $table->enum('status',['CANCELED','APPROVED'])->nullable();
             $table->string('prerequisites')->nullable();

@@ -21,7 +21,6 @@ class TaskDetailSeeder extends Seeder
             "task_type_id"      => 1,
             "additional_fields" => "[]",
             "prerequisites"     => "[]",
-            "sequence_number"   => 1,
             "created_at"        => Date::now(),
         ]);
 
@@ -31,7 +30,6 @@ class TaskDetailSeeder extends Seeder
             "task_type_id"      => 1,
             "additional_fields" => "[]",
             "prerequisites"     => "[]",
-            "sequence_number"   => 1,
             "created_at"        => Date::now(),
         ]);
 
@@ -41,7 +39,6 @@ class TaskDetailSeeder extends Seeder
             "task_type_id"      => 1,
             "additional_fields" => "[]",
             "prerequisites"     => "[]",
-            "sequence_number"   => 1,
             "created_at"        => Date::now(),
         ]);
 
@@ -54,7 +51,6 @@ class TaskDetailSeeder extends Seeder
                 "currency" => "TRY",
             ]),
             "prerequisites"                 => "[]",
-            "sequence_number"               => 2,
             "created_at"                    => Date::now(),
         ]);
 
@@ -63,7 +59,6 @@ class TaskDetailSeeder extends Seeder
             "task_id"                       => 1,
             "task_type_id"                  => 1,
             "additional_fields"             => "[]",
-            "sequence_number"               => 2,
             "prerequisites"                 => "[]",
             "created_at"                    => Date::now(),
         ]);
@@ -76,7 +71,6 @@ class TaskDetailSeeder extends Seeder
                 "country" => "TR",
             ]),
             "prerequisites"                 => "[]",
-            "sequence_number"               => 3,
             "created_at"                    => Date::now(),
         ]);
     }

@@ -123,7 +123,6 @@ class TaskDetailController extends BaseAPIController
         $taskDetail->title = Request::input('title');
         $taskDetail->task_id = Request::input('taskId');
         $taskDetail->task_type_id = Request::input('taskTypeId');
-        $taskDetail->sequence_number = Request::input('sequenceNumber');
         $taskDetail->additional_fields = $additionalFieldsJson;
         $taskDetail->prerequisites =  Request::input('prerequisites');
 

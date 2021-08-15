@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string   $title
  * @property int      $task_id
  * @property string   $task_type_id
- * @property int      $sequence_number
  * @property string   $status
  * @property array    $task_prerequisite_sequence_id
  * @property array    $additional_fields
@@ -38,7 +37,6 @@ class TaskDetail extends Model
         'task_id',
         'title',
         'task_type_id',
-        'sequence_number',
         'status',
     ];
 
@@ -51,7 +49,6 @@ class TaskDetail extends Model
         'task_id'         => 'int',
         'title'           => 'string',
         'task_type_id'    => 'int',
-        'sequence_number' => 'int',
         'status'          => 'string',
     ];
 
