@@ -1,0 +1,337 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Forwardie Api",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/v1/currency/": {
+            "get": {
+                "summary": "Gets Currencies",
+                "operationId": "Currency",
+                "responses": {
+                    "200": {
+                        "description": "Currencies"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Creates Currency",
+                "operationId": "Currencies",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "symbol",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tasks"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/v1/task/": {
+            "get": {
+                "summary": "Gets Tasks",
+                "operationId": "Tasks",
+                "responses": {
+                    "200": {
+                        "description": "Tasks"
+                    }
+                }
+            }
+        },
+        "/api/v1/task": {
+            "post": {
+                "summary": "Creates Task",
+                "operationId": "755cc04ddb73754911084fe2aea55a72",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success result"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/v1/taskDetail/{taskId}": {
+            "get": {
+                "summary": "Gets Task Details",
+                "operationId": "b136dc083103b13376ff22bc189ac732",
+                "parameters": [
+                    {
+                        "name": "taskId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TaskDeails"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Creates Task Detail",
+                "operationId": "10bfd5356971fade541a624d27f231ed",
+                "parameters": [
+                    {
+                        "name": "taskId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskTypeId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "sequenceNumber",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "taskPrerequisiteSequenceId",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success result"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/v1/taskDetail/{taskDetailId}": {
+            "put": {
+                "summary": "Update Task Detail",
+                "operationId": "9caa38c02b120b2861f449b39cfc1246",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskTypeId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "prerequisites",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "enum": [
+                                    "available",
+                                    "pending",
+                                    "sold"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success result"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/v1/taskDetail/nextStep{taskId}": {
+            "get": {
+                "summary": "Finds Task Detail Next Step",
+                "operationId": "30bd4248958ebe472a9e5a18aa0e9d70",
+                "parameters": [
+                    {
+                        "name": "taskId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success result"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/v1/taskDetailHistory/{taskId}": {
+            "get": {
+                "summary": "Gets Task Detail History",
+                "operationId": "7f16569106ecfced13a6c8c31e65d071",
+                "parameters": [
+                    {
+                        "name": "taskId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TaskDeails"
+                    }
+                }
+            }
+        },
+        "/api/v1/taskDetailHistory/{taskDetailId}": {
+            "post": {
+                "summary": "Creates Task Detail History Status only get CANCELED OR APPROVED",
+                "operationId": "7f55df013b58935f828c3099d08805f8",
+                "parameters": [
+                    {
+                        "name": "taskDetailId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskUpdatedOn",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "Date"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success result"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/v1/tasktypes/": {
+            "get": {
+                "summary": "Gets Task Types",
+                "operationId": "Task Types",
+                "responses": {
+                    "200": {
+                        "description": "Tasks"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Creates Task Types",
+                "operationId": "Task Types",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "requiredFields",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "json"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tasks"
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

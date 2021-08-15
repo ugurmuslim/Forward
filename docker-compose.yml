@@ -1,0 +1,55 @@
+version: '3.8'
+
+#Docker Networks
+networks:
+    laravel:
+        driver: bridge
+
+#Volumes
+volumes:
+    dbdata:
+        driver: local
+
+# Workflow
+services:
+    mysql:
+        image: mysql:latest
+        container_name: mysql
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: forwardie
+            MYSQL_USER: forwardie
+            MYSQL_PASSWORD: 12345678
+            MYSQL_ROOT_PASSWORD: secret
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        volumes:
+            - dbdata:/var/lib/mysql/
+        networks:
+            - laravel
+        command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+
+    redis:
+        image: "redis:alpine"
+        container_name: redis
+        restart: unless-stopped
+        ports:
+            - "6379:6379"
+        networks:
+            - laravel
+
+    redis-commander:
+        image: rediscommander/redis-commander:latest
+        environment:
+            - REDIS_HOSTS=local:redis:6379
+            - HTTP_USER=root
+            - HTTP_PASSWORD=qwerty
+        ports:
+            - 8081:8081
+        depends_on:
+            - redis
+        networks:
+            - laravel
